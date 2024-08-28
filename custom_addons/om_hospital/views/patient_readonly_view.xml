@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- explicit list view definition -->
+    <record id="view_readonly_hospital_patients_tree" model="ir.ui.view">
+        <field name="name">hospital.patient.readonly.tree</field>
+        <field name="model">hospital.patient</field>
+        <field name="priority">20</field>
+        <field name="arch" type="xml">
+            <tree string="Patients view" create="0" delete="0">
+                <field name="name" optional="show"/>
+                <field name="last_name" optional="show"/>
+                <field name="date_of_birth" optional="show"/>
+                <field name="gender" optional="show"/>
+            </tree>
+        </field>
+    </record>
+    <!--END -->
+
+    <!-- explicit Form view definition -->
+    <record id="view_readonly_hospital_patients_form" model="ir.ui.view">
+        <field name="name">hospital.patient.readonly.form</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <form string="Patients view" create="0" delete="0" edit="0">
+                <sheet> <!-- Agrega un "Sizedbox" -->
+                    <group> <!-- Agrupamos el formulario -->
+                        <group>
+                            <field name="name"/>
+                            <field name="last_name"/>
+                        </group>
+
+                        <group>
+                            <field name="date_of_birth"/>
+                            <field name="gender"/>
+                        </group>
+
+                    </group>
+
+                </sheet>
+
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <!--END -->
+
+    <record id="action_hospital_readonly_patient" model="ir.actions.act_window">
+        <field name="name">Patients Read only List</field>
+        <field name="res_model">hospital.patient</field>
+        <!-- Define las vitas que vamos a retornar y que declaramos arriba ^^^^ -->
+        <field name="view_mode">tree,form</field>
+        <field name="view_ids" eval="[Command.clear(),
+                          (0,0,{'view_mode':'tree', 'view_id': ref('view_readonly_hospital_patients_tree')}),
+                          (0,0,{'view_mode':'form', 'view_id': ref('view_readonly_hospital_patients_form')})]"/>
+        <!-- Define las vitas que vamos a retornar y que declaramos arriba ^^^^ -->
+    </record>
+
+
+</odoo>

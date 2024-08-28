@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<odoo>
+    <!-- Top menu item -->
+    <menuitem name="distribuidores Piaggio" id="distribuidores.menu_root"/>
+
+    <!-- menu categories -->
+    <menuitem name="Menu 1" id="distribuidores.menu_1" parent="distribuidores.menu_root"/>
+    <menuitem name="Menu 2" id="distribuidores.menu_2" parent="distribuidores.menu_root"/>
+
+    <!-- actions -->
+    <menuitem name="Item del menu 1 (window action)" id="distribuidores.menu_1_list" parent="distribuidores.menu_1"
+              action="distribuidores.action_window"/>
+    <menuitem name="Item del menu 2 (server action)" id="distribuidores.menu_2_list" parent="distribuidores.menu_2"
+              action="distribuidores.action_server"/>
+</odoo>

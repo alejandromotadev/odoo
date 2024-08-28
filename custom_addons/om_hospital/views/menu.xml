@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_hospital_root" name="Hospital modulo"/> <!-- MENU PRINCIPAL -->
+    <menuitem id="menu_frontdesk" name="Front desk" parent="menu_hospital_root"/> <!-- CATEGORIAS -->
+    <menuitem id="menu_patients" name="Patients" parent="menu_frontdesk" action="action_hospital_patient"/> <!-- ACCIONES -->
+    <menuitem id="menu_readonly_patients" name="Patients View" parent="menu_frontdesk" action="action_hospital_readonly_patient"/> <!-- ACCIONES -->
+    <menuitem id="menu_appointment" name="Appointment" parent="menu_frontdesk" action="action_hospital_appointment"/> <!-- ACCIONES -->
+
+</odoo>

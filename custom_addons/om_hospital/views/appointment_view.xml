@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- explicit list view definition -->
+    <record id="view_hospital_appointment_tree" model="ir.ui.view">
+        <field name="name">hospital.appointment.tree</field>
+        <field name="model">hospital.appointment</field>
+        <field name="arch" type="xml">
+            <tree string="Appointment" create="1">
+                <field name="patient_id" optional="show"/>
+                <field name="date_appointment" optional="show"/>
+                <field name="note" optional="show"/>
+            </tree>
+        </field>
+    </record>
+    <!--END -->
+
+    <!-- explicit Form view definition -->
+    <record id="view_hospital_appointment_form" model="ir.ui.view">
+        <field name="name">hospital.appointment.form</field>
+        <field name="model">hospital.appointment</field>
+        <field name="arch" type="xml">
+            <form string="Appointments">
+                <sheet> <!-- Agrega un "Sizedbox" -->
+                    <group> <!-- Agrupamos el formulario -->
+                        <group>
+                            <field name="patient_id"/>
+                            <field name="date_appointment"/>
+                        </group>
+
+
+                    </group>
+                    <notebook>
+                        <page string="Notas">
+                            <field name="note"/>
+                        </page>
+                    </notebook>
+
+                </sheet>
+
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <!--END -->
+
+    <record id="action_hospital_appointment" model="ir.actions.act_window">
+        <field name="name">Appointment List</field>
+        <field name="res_model">hospital.appointment</field>
+        <!-- Define las vitas que vamos a retornar y que declaramos arriba ^^^^ -->
+        <field name="view_mode">tree,form</field>
+        <!-- Define las vitas que vamos a retornar y que declaramos arriba ^^^^ -->
+        <field name="view_ids" eval="[Command.clear(),
+                          (0,0,{'view_mode':'tree', 'view_id': ref('view_hospital_appointment_tree')}),
+                          (0,0,{'view_mode':'form', 'view_id': ref('view_hospital_appointment_form')})]"/>
+    </record>
+
+
+</odoo>
