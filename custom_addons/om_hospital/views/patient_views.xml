@@ -31,6 +31,7 @@
                         <group>
                             <field name="date_of_birth"/>
                             <field name="gender"/>
+                            <field name="tag_ids" widget="many2many_tags"/>
                         </group>
 
                     </group>
@@ -47,7 +48,7 @@
     <!--END -->
 
     <record id="action_hospital_patient" model="ir.actions.act_window">
-        <field name="name">Patients List</field>
+        <field name="name">Lista de pacientes</field>
         <field name="res_model">hospital.patient</field>
         <!-- Define las vitas que vamos a retornar y que declaramos arriba ^^^^ -->
         <field name="view_mode">tree,form</field>

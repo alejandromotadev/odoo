@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <menuitem id="menu_hospital_root" name="Hospital modulo"/> <!-- MENU PRINCIPAL -->
-    <menuitem id="menu_frontdesk" name="Front desk" parent="menu_hospital_root"/> <!-- CATEGORIAS -->
-    <menuitem id="menu_patients" name="Patients" parent="menu_frontdesk" action="action_hospital_patient"/> <!-- ACCIONES -->
-    <menuitem id="menu_readonly_patients" name="Patients View" parent="menu_frontdesk" action="action_hospital_readonly_patient"/> <!-- ACCIONES -->
-    <menuitem id="menu_appointment" name="Appointment" parent="menu_frontdesk" action="action_hospital_appointment"/> <!-- ACCIONES -->
+    <menuitem id="menu_hospital_root" name="Hospital"
+              web_icon="om_hospital,static/description/icon.png"/> <!-- MENU PRINCIPAL -->
+
+    <menuitem id="menu_front_desk" name="Escritorio" parent="menu_hospital_root"/> <!-- CATEGORIAS -->
+
+    <menuitem id="menu_patients" name="Lista de Pacientes" parent="menu_front_desk"
+              action="action_hospital_patient"/>
+    <menuitem id="menu_readonly_patients" name="Lista de Pacientes (Read Only)" parent="menu_front_desk"
+              action="action_hospital_readonly_patient"/>
+    <menuitem id="menu_appointment" name="Lista de Citas" parent="menu_front_desk" action="action_hospital_appointment"/>
+
+    <menuitem id="menu_settings" name="Configuracion" parent="menu_hospital_root"/> <!-- CATEGORIAS -->
+    <menuitem id="menu_tags" name="Tags" parent="menu_settings" action="action_patient_tag"/>
 
 </odoo>
