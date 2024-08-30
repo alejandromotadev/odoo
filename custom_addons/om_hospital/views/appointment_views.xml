@@ -22,26 +22,39 @@
         <field name="arch" type="xml">
             <form string="Citas">
                 <header>
-                    <button name="action_confirm" type="object" string="Confirmar" invisible="state != 'draft'" class="oe_highlight"/>
-                    <button name="action_ongoing" type="object" string="En progreso" invisible="state != 'confirmed'" class="oe_highlight"/>
-                    <button name="action_done" type="object" string="Terminado" invisible="state != 'ongoing'" class="oe_highlight"/>
+                    <button name="action_confirm" type="object" string="Confirmar" invisible="state != 'draft'"
+                            class="oe_highlight"/>
+                    <button name="action_ongoing" type="object" string="En progreso" invisible="state != 'confirmed'"
+                            class="oe_highlight"/>
+                    <button name="action_done" type="object" string="Terminado" invisible="state != 'ongoing'"
+                            class="oe_highlight"/>
                     <button name="action_cancel" type="object" string="Cancelar" invisible="state == 'done'"/>
-                   <!-- <button name="action_archive" type="object" string="Archivar" invisible="state != 'cancelled'"/> -->
-                    <field name="state" widget="statusbar" options="{'clickable': '1'}" statusbar_visible="draft,confirmed,ongoing,done"/>
+                    <!-- <button name="action_archive" type="object" string="Archivar" invisible="state != 'cancelled'"/> -->
+                    <field name="state" widget="statusbar" options="{'clickable': '1'}"
+                           statusbar_visible="draft,confirmed,ongoing,done"/>
                 </header>
                 <sheet> <!-- Agrega un "Sizedbox" -->
                     <group> <!-- Agrupamos el formulario -->
                         <group>
                             <field name="reference" readonly="True"/>
                             <field name="patient_id"/>
+                            <field name="related_date_of_birth"/>
                             <field name="date_appointment"/>
                         </group>
 
-
                     </group>
+                    <field name="total_qty"/>
                     <notebook>
                         <page string="Notas">
                             <field name="note"/>
+                        </page>
+                        <page string="Citas Lines">
+                            <field name="appointment_lines_ids">
+                                <tree editable="bottom">
+                                    <field name="med_id"/>
+                                    <field name="qty"/>
+                                </tree>
+                            </field>
                         </page>
                     </notebook>
 
